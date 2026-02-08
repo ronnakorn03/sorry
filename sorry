@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ง้อน้ำเพชรแฟนไทยชณานนท์ 🥺</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #ffd6e0, #ffeef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 5px;
+            transition: transform 0.3s;
+        }
+
+        .yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #e91e63;
+            min-height: 30px;
+        }
+
+        /* หัวใจลอย */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 24px;
+            color: #ff5ca8;
+            animation: floatUp 5s linear forwards;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>ดีกันนะ 💖</h1>
+    <p>เราผิดไปแล้ว ขอโทษจริง ๆ นะ</p>
+
+    <div class="buttons">
+        <button class="yes" id="yesBtn" onclick="yesClick()">Yes</button>
+        <button class="no" id="noBtn" onclick="noClick()">No</button>
+    </div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+    let noCount = 0;
+    let yesScale = 1;
+
+    function yesClick() {
+        document.getElementById("message").innerText =
+            "เย้ๆๆๆ 🥰 ดีกันแล้วนะ!";
+    }
+
+    function noClick() {
+        noCount++;
+
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+
+        // ขยายปุ่ม Yes
+        yesScale += 0.35;
+        yesBtn.style.transform = `scale(${yesScale})`;
+
+        if (noCount === 1) {
+            document.getElementById("message").innerText =
+                "เธอออ ดีกันน้าา เราขอโทษจีงๆ 🥺";
+        } 
+        else if (noCount === 2) {
+            document.getElementById("message").innerText =
+                "เธอออๆๆๆๆๆ ม้ายเอาดีกานนน 😭";
+        } 
+        else if (noCount === 3) {
+            document.getElementById("message").innerText =
+                "เธอค้าบบบบ ดีกันน้าาา เราผิดปายแล้ววว 💔";
+        } 
+        else {
+            document.getElementById("message").innerText =
+                "ไม่มีทางเลือกแล้วนะ 😏 กด Yes อย่างเดียวเลย";
+            noBtn.style.display = "none";
+        }
+    }
+
+    // สร้างหัวใจลอย
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
+        heart.style.animationDuration = Math.random() * 2 + 4 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
